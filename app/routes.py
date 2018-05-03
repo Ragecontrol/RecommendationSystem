@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for, request
 from app import app,db
 from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import User, Film
 from werkzeug.urls import url_parse
 
 @app.route('/')
@@ -71,3 +71,13 @@ def register():
         flash('Регистрация прошла успешно')
         return redirect(url_for('login'))
     return render_template('register.html', title='Регистрация', form=form)
+
+@app.route('/user/<username>')
+@login_required
+def user(username):
+    user=User.query.filter_by(username=username).first_or_404()
+    films = [
+        {'liked': user, 'title': 'filmec1', 'userRating': '8'},
+        {'liked': user, 'title': 'filmec2', 'userRating': '9'},
+    ]
+    return render_template('user.html', user=user, films=films)

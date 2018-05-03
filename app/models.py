@@ -2,6 +2,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 from app import db, login
 from flask_login import UserMixin
+from hashlib import md5
 
 class User (UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -19,6 +20,11 @@ class User (UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    def avatar(self, size):
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+        return 'https://www.gravatar.com/avatar/{}?d=retro&s={}'.format(
+            digest, size)
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -28,6 +34,7 @@ class Film (db.Model):
         title = db.Column(db.String(255))
         year = db.Column(db.DateTime, index=True)
         genres = db.Column(db.String(255))
+        userRating = db.Column(db.Integer, index=True)
         user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
         def __repr__(self):
