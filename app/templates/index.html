@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+    {% block content %}
+        <h1>Привет, {{ current_user.username }}!</h1>
+        {% for obj in objects %}
+        <div><p>{{ obj.title }} <br> {{ obj.genre }} <br>{{ obj.year }}<br>{{ obj.rating }}<br>{{ obj.link }}</p></div>
+        {% endfor %}
+    {% endblock %}

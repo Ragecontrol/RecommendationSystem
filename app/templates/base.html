@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Рекомендации</title>
+        {% else %}
+        <title>Рекомендации</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>Рекомендации:
+            <a href="{{ url_for('index') }}">Главная</a>
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Авторизация</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}">Выход</a>
+            {% endif %}
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li> {{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %} {% endblock %}
+    </body>
+</html></html>
