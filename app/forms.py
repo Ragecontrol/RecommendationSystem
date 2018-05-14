@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, IntegerField, RadioField, FloatField
-from wtforms.validators import DataRequired, ValidationError, Email, EqualTo, Length
+from wtforms.validators import DataRequired, ValidationError, Email, EqualTo, Length, NumberRange
 from app.models import User
 
 class LoginForm (FlaskForm):
@@ -47,6 +47,6 @@ class SetUserRatingForm(FlaskForm):
     year = IntegerField()
     genres = StringField()
     avgRating = FloatField()
-    userRating = RadioField()
+    userRating = IntegerField(validators=[NumberRange(min=1, max=10)])
     userId = IntegerField()
     submit = SubmitField('Принять')

@@ -131,17 +131,17 @@ def unfollow(username):
 @app.route('/films', methods=['GET', 'POST'])
 @login_required
 def films():
-    form = SetUserRatingForm()
-    if form.validate_on_submit():
-        p = Post.query.filter_by(title=form.title.data).filter_by(liked=current_user).first()
-        if p:
-            p.userRating = form.userRating.data
-        else:
-            postF = Post(title=form.title.data, year=form.year.data, genres=form.genres.data,
-                         userRating=form.userRating.data, liked=current_user)
-            db.session.add(postF)
-        db.session.commit()
-    return render_template('/films.html', items=Film.query.all(), form=form)
+    # form = SetUserRatingForm()
+    # if form.validate_on_submit():
+    #     p = Post.query.filter_by(title=form.title.data).filter_by(liked=current_user).first()
+    #     if p:
+    #         p.userRating = form.userRating.data
+    #     else:
+    #         postF = Post(title=form.title.data, year=form.year.data, genres=form.genres.data,
+    #                      userRating=form.userRating.data, liked=current_user)
+    #         db.session.add(postF)
+    #     db.session.commit()
+    return render_template('/films.html', items=Film.query.all())
 
 # @app.route('/films',methods=['GET', 'POST'])
 # @login_required

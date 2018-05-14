@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/stars.css') }}">
+    <h1>Фильмы</h1>
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Год</th>
+            <th>Жанры</th>
+            <th>Рейтинг пользователей</th>
+            <th>Ваша оценка</th>
+            <th>Ссылка</th>
+        </tr>
+        {% for item in items %}
+        <tr><form role="form" id="hide">
+            {{ form.hidden_tag() }}
+            <td>{{ item.title }}></td>
+            <td>{{ item.year }}></td>
+            <td>{{ item.genres }}</td>
+            <td>{{ item.avgRating }}></td>
+            <td><div id="reviewStars-input">
+                    <input id="star-10{{item.id}}" type="radio" value="10" name="reviewStars{{item.id}}"/>
+	                <label title="10" for="star-10{{item.id}}"></label>
+
+                    <input id="star-9{{item.id}}" type="radio" value="9" name="reviewStars{{item.id}}"/>
+	                <label title="9" for="star-9{{item.id}}"></label>
+
+                    <input id="star-8{{item.id}}" type="radio" value="8" name="reviewStars{{item.id}}"/>
+	                <label title="8" for="star-8{{item.id}}"></label>
+
+                    <input id="star-7{{item.id}}" type="radio" value="7" name="reviewStars{{item.id}}"/>
+	                <label title="7" for="star-7{{item.id}}"></label>
+
+                    <input id="star-6{{item.id}}" type="radio" value="6" name="reviewStars{{item.id}}"/>
+	                <label title="6" for="star-6{{item.id}}"></label>
+
+                    <input id="star-5{{item.id}}" type="radio" value="5" name="reviewStars{{item.id}}"/>
+	                <label title="5" for="star-5{{item.id}}"></label>
+
+	                <input id="star-4{{item.id}}" type="radio" value="4" name="reviewStars{{item.id}}"/>
+	                <label title="4{{item.id}}" for="star-4{{item.id}}"></label>
+
+	                <input id="star-3{{item.id}}" type="radio" value="3" name="reviewStars{{item.id}}"/>
+	                <label title="3" for="star-3{{item.id}}"></label>
+
+	                <input id="star-2{{item.id}}" type="radio" value="2" name="reviewStars{{item.id}}"/>
+	                <label title="2" for="star-2{{item.id}}"></label>
+
+	                <input id="star-1{{item.id}}" type="radio" value="1" name="reviewStars{{item.id}}"/>
+	                <label title="1" for="star-1{{item.id}}"></label>
+
+                </div>
+            </td>
+            <td><a href="https://www.google.com/search?q={{ item.title }}" target="_blank">Ссылка</a></td>
+        </form>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
