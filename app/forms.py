@@ -42,11 +42,7 @@ class EditProfileForm(FlaskForm):
             if user is not None:
                 raise ValidationError('Пользователь с таким именем уже существует')
 
-class SetUserRatingForm(FlaskForm):
-    title = StringField()
-    year = IntegerField()
-    genres = StringField()
-    avgRating = FloatField()
-    userRating = IntegerField(validators=[NumberRange(min=1, max=10)])
-    userId = IntegerField()
-    submit = SubmitField('Принять')
+class UserRatingForm(FlaskForm):
+    film_id = IntegerField();
+    user_rating = IntegerField(validators=[NumberRange(min=1, max=10)]);
+    submit = SubmitField('Принять');

@@ -2,9 +2,31 @@
 
 {% block content %}
   <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/stars.css') }}">
-    <h1>Фильмы</h1>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <!--<script src="static/js/script.js"></script>-->
+<!--<script>-->
+    <!--function getUserRating(){-->
+        <!--$.ajax({-->
+        <!--type:   "POST",-->
+        <!--url:    "/get_user_rating",-->
+        <!--data:   $('form').serialize(),-->
+        <!--type:   'POST',-->
+        <!--success: function(response){-->
+            <!--var json = jQuery.parseJSON(response)-->
+            <!--alert(json.userRating)-->
+            <!--console.log(response);-->
+        <!--},-->
+        <!--error: function(error) {-->
+            <!--console.log(error);-->
+        <!--}-->
+    <!--});-->
+    <!--}-->
+<!--</script>-->
+
+   <h1>Фильмы</h1>
     <table>
         <tr>
+            <th>ID</th>
             <th>Название</th>
             <th>Год</th>
             <th>Жанры</th>
@@ -13,12 +35,12 @@
             <th>Ссылка</th>
         </tr>
         {% for item in items %}
-        <tr><form role="form" id="hide">
-            {{ form.hidden_tag() }}
-            <td>{{ item.title }}></td>
-            <td>{{ item.year }}></td>
+        <tr class="tr1"> <form action="" method="post">
+            <td> {{ item.id }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.year }}</td>
             <td>{{ item.genres }}</td>
-            <td>{{ item.avgRating }}></td>
+            <td>{{ item.avgRating }}</td>
             <td><div id="reviewStars-input">
                     <input id="star-10{{item.id}}" type="radio" value="10" name="reviewStars{{item.id}}"/>
 	                <label title="10" for="star-10{{item.id}}"></label>
@@ -39,7 +61,7 @@
 	                <label title="5" for="star-5{{item.id}}"></label>
 
 	                <input id="star-4{{item.id}}" type="radio" value="4" name="reviewStars{{item.id}}"/>
-	                <label title="4{{item.id}}" for="star-4{{item.id}}"></label>
+	                <label title="4" for="star-4{{item.id}}"></label>
 
 	                <input id="star-3{{item.id}}" type="radio" value="3" name="reviewStars{{item.id}}"/>
 	                <label title="3" for="star-3{{item.id}}"></label>
@@ -57,4 +79,8 @@
         </tr>
         {% endfor %}
     </table>
+
+<script>
+
+</script>
 {% endblock %}

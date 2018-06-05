@@ -1,9 +1,10 @@
-from flask import render_template, flash, redirect, url_for, request, json
+from flask import render_template, flash, redirect, url_for, request, jsonify, json
 from app import app,db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, SetUserRatingForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, UserRatingForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Post, Film
+from app.models import User, Film, user_film
 from werkzeug.urls import url_parse
+from sqlalchemy import and_, not_, exists, select
 
 @app.route('/')
 @app.route('/index')
@@ -76,11 +77,7 @@ def register():
 @login_required
 def user(username):
     user=User.query.filter_by(username=username).first_or_404()
-    posts = [
-        {'liked': user, 'title': 'filmec1', 'userRating': '8'},
-        {'liked': user, 'title': 'filmec2', 'userRating': '9'},
-    ]
-    return render_template('user.html', user=user, posts=posts)
+    return render_template('user.html', user=user)
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -131,30 +128,29 @@ def unfollow(username):
 @app.route('/films', methods=['GET', 'POST'])
 @login_required
 def films():
-    # form = SetUserRatingForm()
-    # if form.validate_on_submit():
-    #     p = Post.query.filter_by(title=form.title.data).filter_by(liked=current_user).first()
-    #     if p:
-    #         p.userRating = form.userRating.data
-    #     else:
-    #         postF = Post(title=form.title.data, year=form.year.data, genres=form.genres.data,
-    #                      userRating=form.userRating.data, liked=current_user)
-    #         db.session.add(postF)
-    #     db.session.commit()
-    return render_template('/films.html', items=Film.query.all())
+    items = db.session.query(Film).filter(
+        ~exists().where(
+                    and_(
+                        user_film.c.user_id == 'user.id',
+                        user_film.c.film_id == 'film.id'
+                    )
+         )
+    )
+    return render_template('/films.html', items=items)
 
-# @app.route('/films',methods=['GET', 'POST'])
+# @app.route('/get_user_rating', methods=['POST'])
 # @login_required
-# def post():
-#     form = SetUserRatingForm()
-#     if form.validate_on_submit():
-#         p = Post.query.filter_by(title=form.title.data).filter_by(liked=current_user).first()
-#         if p:
-#             p.userRating=form.userRating.data
-#         else:
-#             postF = Post(title=form.title.data, year=form.year.data, genres=form.genres.data, userRating=form.userRating.data, liked=current_user)
-#             db.session.add(postF)
-#         db.session.commit()
-#     return redirect(url_for('films'))
+# def get_user_rating():
+#     form=UserRatingForm()
+#     user_id = current_user.id
+#     film_id = form.film_id.data
+#     user_rating = form.user_rating.data
+#     flash = (str(user_id)+' '+str(film_id)+' '+str(user_rating))
+#     render_template('films.html', form=form)
+    #film_id = request.form['filmId']
+    # userRating = request.form['reviewStars{{item.id}}']
+    # flash('123' + str(user_id)+str(userRating))
+    # return render_template('films.html')
+   # return jsonify({'userId': user_id, 'filmId': film_id, 'userRating':userRating})
 
 
