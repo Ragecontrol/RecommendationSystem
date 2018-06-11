@@ -1,0 +1,91 @@
+2018-06-11 09:04:28,498 ERROR: Exception on /films [GET] [in c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Maksim\RecommendationSystem\app\routes.py", line 265, in films
+    return render_template('/films.html', title='Фильмы', items=items.items, next_url=next_url, prev_url=prev_url, result=result)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Maksim\RecommendationSystem\app\templates\films.html", line 76, in template
+    {% endblock %}
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\parser.py", line 213, in parse_if
+    'name:endif'))
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\parser.py", line 144, in parse_statement
+    self.fail_unknown_tag(token.value, token.lineno)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\parser.py", line 97, in fail_unknown_tag
+    return self._fail_ut_eof(name, self._end_token_stack, lineno)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\parser.py", line 90, in _fail_ut_eof
+    self.fail(' '.join(message), lineno)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endblock'. You probably made a nesting mistake. Jinja is expecting this tag, but currently looking for 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
+2018-06-11 09:05:06,680 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:05:38,127 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:06:20,857 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:06:46,536 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:28:03,769 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:34:59,884 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:38:21,087 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:39:59,930 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:40:24,288 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:40:43,700 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:41:14,699 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:41:38,193 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:42:12,121 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:44:39,985 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:45:24,701 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:46:11,497 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:46:58,002 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:47:38,751 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:47:56,967 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:48:36,962 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:48:47,875 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 09:52:15,116 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 10:02:13,103 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 10:04:20,940 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]

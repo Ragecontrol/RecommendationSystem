@@ -1,0 +1,127 @@
+2018-06-11 12:52:57,424 ERROR: Exception on /edit_profile [GET] [in c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Maksim\RecommendationSystem\app\routes.py", line 92, in edit_profile
+    form=form)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\templating.py", line 134, in render_template
+    context, ctx.app)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\templating.py", line 116, in _render
+    rv = template.render(context)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Maksim\RecommendationSystem\app\templates\edit_profile.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\templating.py", line 57, in get_source
+    return self._get_source_fast(environment, template)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\templating.py", line 85, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: bootstrap/wtf.html
+2018-06-11 12:53:21,732 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 12:53:23,324 ERROR: Exception on /edit_profile [GET] [in c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Maksim\RecommendationSystem\app\routes.py", line 92, in edit_profile
+    form=form)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\templating.py", line 134, in render_template
+    context, ctx.app)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\templating.py", line 116, in _render
+    rv = template.render(context)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Maksim\RecommendationSystem\app\templates\edit_profile.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\templating.py", line 57, in get_source
+    return self._get_source_fast(environment, template)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\templating.py", line 85, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: bootstrap/wtf.html
+2018-06-11 12:53:29,265 ERROR: Exception on /edit_profile [GET] [in c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Maksim\RecommendationSystem\app\routes.py", line 92, in edit_profile
+    form=form)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\templating.py", line 134, in render_template
+    context, ctx.app)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\templating.py", line 116, in _render
+    rv = template.render(context)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Maksim\RecommendationSystem\app\templates\edit_profile.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\templating.py", line 57, in get_source
+    return self._get_source_fast(environment, template)
+  File "c:\users\maksim\recommendationsystem\venv\lib\site-packages\flask\templating.py", line 85, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: bootstrap/wtf.html
+2018-06-11 12:53:40,060 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 12:54:22,056 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 12:57:17,287 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 12:58:33,641 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 12:59:14,367 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 13:00:31,178 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 13:08:43,892 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 13:28:42,831 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 13:31:27,142 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 13:32:23,381 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 13:33:35,861 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 13:34:41,110 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 13:35:29,560 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 13:35:44,196 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]
+2018-06-11 13:35:57,877 INFO: app startup [in C:\Users\Maksim\RecommendationSystem\app\__init__.py:45]

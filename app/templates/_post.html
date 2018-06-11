@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-md-3">
+        <!--<ul class="list-group">-->
+            <!--<li class="list-group-item"><a href="{{ url_for('user', username=post.username) }}">{{ post.username }} </a>оценил <a href="https://www.google.com/search?q={{ post.title }}">{{ post.title }}</a> на {{ post.user_rating }} </li>-->
+<!--&lt;!&ndash;<table class="table table-hover">&ndash;&gt;-->
+    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td><a href="{{ url_for('user', username=post.username) }}">{{ post.username }} </a>оценил <br> <a href="https://www.google.com/search?q={{ post.title }}">{{ post.title }}</a> на {{ post.user_rating }}</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+<!--&lt;!&ndash;</table>&ndash;&gt;-->
+        <!--</ul>-->
+        <h4><a href="{{ url_for('user', username=post.username) }}">{{ post.username }} </a>оценил <a href="https://www.google.com/search?q={{ post.title }}" target="_blank">{{ post.title }}</a> на {{ post.user_rating }}</h4>
+            <br>
+            </div>
+        </div>
+</div>
+
