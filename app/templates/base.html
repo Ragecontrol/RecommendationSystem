@@ -1,36 +1,76 @@
-<!DOCTYPE html>
+<! DOCTYPE html>
 <html>
-    <head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css')}} ">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+{% block title %}
         {% if title %}
-        <title>{{ title }} - Рекомендации</title>
+        <title>{{ title }} - RecAll</title>
         {% else %}
-        <title>Рекомендации</title>
+        <title>RecAll</title>
         {% endif %}
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    </head>
-    <body>
-        <div>Рекомендации:
-            <a href="{{ url_for('index') }}">Главная</a>
-            {% if current_user.is_anonymous %}
-            <a href="{{ url_for('login') }}">Авторизация</a>
-            {% else %}
-            <a href="{{ url_for('user', username=current_user.username) }}">Личный кабинет</a>
-            <a href="{{ url_for('films')}}">Фильмы</a>
-            <a href="{{ url_for('logout') }}">Выход</a>
-            {% endif %}
+{% endblock %}
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+</head>
+<body>
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand mb-0 h1" href="{{ url_for('index') }}">RecAll</a>
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbarNav">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Домой</a></li>
+                    {% if current_user.is_anonymous %}
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Вход</a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('explore') }}">Оценки пользователей</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('news') }}">Новости</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('films') }}">Фильмы</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">Профиль</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Выход</a></li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
-        <hr>
+    </div>
+    <hr>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         <ul>
             {% for message in messages %}
-            <li> {{ message }}</li>
+            <li>{{ message }}</li>
             {% endfor %}
         </ul>
         {% endif %}
         {% endwith %}
-        {% block content %} {% endblock %}
-
-
-    </body>
+{% block content %} {% endblock %}
+        <div id="f">
+            <div class="container">
+                <div class="row centered">
+                    <div class="col-lg-8 offset-md-2">
+                        <a href="https://vk.com/id83958027" target="_blank"><i class="fa fa-vk"></i></a>
+                        <a href="https://www.instagram.com/maksandrrr/"target="_blank"><i class="fa fa-instagram"></i></a>
+                        <a href="https://web.telegram.org/#/im?p=@RageControl"target="_blank"><i class="fa fa-paper-plane"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+</body>
 </html>

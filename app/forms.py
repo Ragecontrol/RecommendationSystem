@@ -12,7 +12,7 @@ class LoginForm (FlaskForm):
 class RegistrationForm (FlaskForm):
     username = StringField('Логин', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    password = PasswordField('Пароль', validators=[DataRequired()])
     password2 = PasswordField(
         'Повторите пароль', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Принять')
@@ -30,6 +30,9 @@ class RegistrationForm (FlaskForm):
 class EditProfileForm(FlaskForm):
     username = StringField('Логин', validators=[DataRequired()])
     about_me = TextAreaField('Расскажите о себе', validators=[Length(min=0, max=140)])
+    password = PasswordField('Изменить пароль', validators=[DataRequired()])
+    password2 = PasswordField(
+        'Повторите пароль', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Принять')
 
     def __init__(self, original_username, *args, **kwargs):
@@ -42,7 +45,12 @@ class EditProfileForm(FlaskForm):
             if user is not None:
                 raise ValidationError('Пользователь с таким именем уже существует')
 
-class UserRatingForm(FlaskForm):
-    film_id = IntegerField();
-    user_rating = IntegerField(validators=[NumberRange(min=1, max=10)]);
-    submit = SubmitField('Принять');
+class ResetPasswordRequestForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Сбросить пароль')
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('Пароль', validators=[DataRequired()])
+    password2 = PasswordField(
+        'Повторите пароль', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Сбросить пароль')

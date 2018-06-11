@@ -1,86 +1,116 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/stars.css') }}">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <!--<script src="static/js/script.js"></script>-->
-<!--<script>-->
-    <!--function getUserRating(){-->
-        <!--$.ajax({-->
-        <!--type:   "POST",-->
-        <!--url:    "/get_user_rating",-->
-        <!--data:   $('form').serialize(),-->
-        <!--type:   'POST',-->
-        <!--success: function(response){-->
-            <!--var json = jQuery.parseJSON(response)-->
-            <!--alert(json.userRating)-->
-            <!--console.log(response);-->
-        <!--},-->
-        <!--error: function(error) {-->
-            <!--console.log(error);-->
-        <!--}-->
-    <!--});-->
-    <!--}-->
-<!--</script>-->
+  <link rel="stylesheet" href="/static/css/stars.css">
+
+    <script src="/static/js/script.js"></script>
+
 
    <h1>Фильмы</h1>
-    <table>
+<br>
+    <h3>Оцените фильмы</h3>
+<br>
+        <form method="get" class="form-inline">
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" placeholder="Поиск по таблице" name="q" value="{{ request.args.get('q', '') }}">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">Поиск</button>
+        </form>
+    <table class="table table-hover" id="films_table">
         <tr>
-            <th>ID</th>
             <th>Название</th>
             <th>Год</th>
             <th>Жанры</th>
-            <th>Рейтинг пользователей</th>
             <th>Ваша оценка</th>
-            <th>Ссылка</th>
         </tr>
         {% for item in items %}
-        <tr class="tr1"> <form action="" method="post">
-            <td> {{ item.id }}</td>
-            <td>{{ item.title }}</td>
+        <tr>
+            <td><a href="https://www.google.com/search?q={{ item.title }}" target="blank">{{ item.title }}</a></td>
             <td>{{ item.year }}</td>
             <td>{{ item.genres }}</td>
-            <td>{{ item.avgRating }}</td>
             <td><div id="reviewStars-input">
-                    <input id="star-10{{item.id}}" type="radio" value="10" name="reviewStars{{item.id}}"/>
+                    <input id="star-10{{item.id}}" type="radio" value="10" name="reviewStars{{item.id}}" onclick="funcStars(10, {{item.id}},'{{item.title}}')"/>
 	                <label title="10" for="star-10{{item.id}}"></label>
 
-                    <input id="star-9{{item.id}}" type="radio" value="9" name="reviewStars{{item.id}}"/>
+                    <input id="star-9{{item.id}}" type="radio" value="9" name="reviewStars{{item.id}}" onclick="funcStars(9, {{item.id}},'{{item.title}}')"/>
 	                <label title="9" for="star-9{{item.id}}"></label>
 
-                    <input id="star-8{{item.id}}" type="radio" value="8" name="reviewStars{{item.id}}"/>
+                    <input id="star-8{{item.id}}" type="radio" value="8" name="reviewStars{{item.id}}" onclick="funcStars(8, {{item.id}},'{{item.title}}')"/>
 	                <label title="8" for="star-8{{item.id}}"></label>
 
-                    <input id="star-7{{item.id}}" type="radio" value="7" name="reviewStars{{item.id}}"/>
+                    <input id="star-7{{item.id}}" type="radio" value="7" name="reviewStars{{item.id}}" onclick="funcStars(7, {{item.id}},'{{item.title}}')"/>
 	                <label title="7" for="star-7{{item.id}}"></label>
 
-                    <input id="star-6{{item.id}}" type="radio" value="6" name="reviewStars{{item.id}}"/>
+                    <input id="star-6{{item.id}}" type="radio" value="6" name="reviewStars{{item.id}}" onclick="funcStars(6, {{item.id}},'{{item.title}}')"/>
 	                <label title="6" for="star-6{{item.id}}"></label>
 
-                    <input id="star-5{{item.id}}" type="radio" value="5" name="reviewStars{{item.id}}"/>
+                    <input id="star-5{{item.id}}" type="radio" value="5" name="reviewStars{{item.id}}" onclick="funcStars(5, {{item.id}},'{{item.title}}')"/>
 	                <label title="5" for="star-5{{item.id}}"></label>
 
-	                <input id="star-4{{item.id}}" type="radio" value="4" name="reviewStars{{item.id}}"/>
+	                <input id="star-4{{item.id}}" type="radio" value="4" name="reviewStars{{item.id}}" onclick="funcStars(4, {{item.id}},'{{item.title}}')"/>
 	                <label title="4" for="star-4{{item.id}}"></label>
 
-	                <input id="star-3{{item.id}}" type="radio" value="3" name="reviewStars{{item.id}}"/>
+	                <input id="star-3{{item.id}}" type="radio" value="3" name="reviewStars{{item.id}}" onclick="funcStars(3, {{item.id}},'{{item.title}}')"/>
 	                <label title="3" for="star-3{{item.id}}"></label>
 
-	                <input id="star-2{{item.id}}" type="radio" value="2" name="reviewStars{{item.id}}"/>
+	                <input id="star-2{{item.id}}" type="radio" value="2" name="reviewStars{{item.id}}" onclick="funcStars(2, {{item.id}},'{{item.title}}')"/>
 	                <label title="2" for="star-2{{item.id}}"></label>
 
-	                <input id="star-1{{item.id}}" type="radio" value="1" name="reviewStars{{item.id}}"/>
+	                <input id="star-1{{item.id}}" type="radio" value="1" name="reviewStars{{item.id}}" onclick="funcStars(1, {{item.id}},'{{item.title}}')"/>
 	                <label title="1" for="star-1{{item.id}}"></label>
 
                 </div>
             </td>
-            <td><a href="https://www.google.com/search?q={{ item.title }}" target="_blank">Ссылка</a></td>
-        </form>
         </tr>
         {% endfor %}
     </table>
+    <nav aria-label="page_navigation">
+        <ul class="pagination">
+            <li class="page-item{% if not prev_url %} disabled{% endif %}">
+                <a class="page-link" href="{{ prev_url or '#' }}" tabindex="-1">Назад</a>
+            </li>
+            <li class="page-item{% if not next_url %} disabled{% endif %}">
+                <a class="page-link" href="{{ next_url or '#' }}" tabindex="+1">Вперед</a>
+            </li>
+        </ul>
+    </nav>
+{% if result %}
+    <h3>Рекомендуем посмотреть</h3>
+    <div class="row">
+        {% for r in result %}
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="../static/img/card_film.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ r.title }}</h5>
+                                <p class="card-text">Описание фильма</p>
+                                <a href="https://www.google.com/search?q={{ r.title }}" class="btn btn-primary"target="_blank">К фильму</a>
+                            </div>
+                    </div>
+                </div>
 
-<script>
+    <!--<p><a href="https://www.google.com/search?q={{ r.title }} фильм" target="blank">{{ r.title }}</a> потому что он нравится пользователям, которым понравился <a href="https://www.google.com/search?q={{ r.impact }} фильм" target="blank"> {{ r.impact }}</a></p>-->
+        {% endfor %}
+    </div>
+    {% else %}
+        <h3>К сожалению, не нашлось ни одного фильма специально для Вас <i class="fa fa-frown"></i>. Вы можете посмотреть один из популярных у пользователей</h3>
+         <div class="row">
+        {% for p in pop_films %}
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="../static/img/card_film.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ p.title }}</h5>
+                                <p class="card-text">Описание фильма</p>
+                                <a href="https://www.google.com/search?q={{ p.title }}" class="btn btn-primary"target="_blank">К фильму</a>
+                            </div>
+                    </div>
+                </div>
 
-</script>
+                <!--<p><a href="https://www.google.com/search?q={{ p.title }} фильм" target="blank">{{ p.title }}</a></p>-->
+        {% endfor %}
+         </div>
+    {% endif %}
 {% endblock %}
