@@ -32,7 +32,7 @@ def downgrade():
     op.create_table('post',
     sa.Column('id', sa.INTEGER(), nullable=False),
     sa.Column('title', sa.VARCHAR(length=255), nullable=True),
-    sa.Column('year', sa.DATETIME(), nullable=True),
+    sa.Column('year', sa.String(64), nullable=True),
     sa.Column('genres', sa.VARCHAR(length=255), nullable=True),
     sa.Column('userRating', sa.INTEGER(), nullable=True),
     sa.Column('timestamp', sa.DATETIME(), nullable=True),

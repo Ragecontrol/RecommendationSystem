@@ -30,7 +30,7 @@ def upgrade():
     op.create_table('film',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=255), nullable=True),
-    sa.Column('year', sa.DateTime(), nullable=True),
+    sa.Column('year', sa.String(64), nullable=True),
     sa.Column('genres', sa.String(length=255), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
