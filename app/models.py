@@ -132,7 +132,7 @@ def load_user(id):
 
 class Film (db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    titleId = db.Column(db.String)
+    titleId = db.Column(db.String(64))
     title = db.Column(db.String(255))
     year = db.Column(db.String)
     genres = db.Column(db.String(255))
