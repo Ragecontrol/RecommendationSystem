@@ -147,7 +147,7 @@ def films():
                 WHERE user_rating IS NOT NULL
                 GROUP BY user_id HAVING count(film_id) >= 2
             )
-            GROUP BY film_id HAVING count(user_id) >= 1
+            GROUP BY film_id HAVING count(user_id) >= 2
         """
     cursor.execute(objs_sql)
     obj_to_row = {}
